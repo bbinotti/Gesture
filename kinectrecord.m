@@ -1,13 +1,13 @@
 function kinectrecord(filename)
 %acquire & save kinect data
 vid1 = videoinput('kinect', 1, 'RGB_640x480');
-vid2 = videoinput('kinect', 2, 'Depth_320x240');
-
-% src1 = getselectedsource(vid1);
+% vid2 = videoinput('kinect', 2, 'Depth_320x240');
+vid2 = videoinput('kinect', 2, 'Depth_640x480');
+src1 = getselectedsource(vid1);
 src2 = getselectedsource(vid2);
 
-vid1.FramesPerTrigger = 20;
-vid2.FramesPerTrigger = 20;
+vid1.FramesPerTrigger = 200;
+vid2.FramesPerTrigger = 200;
 
 % vid1.TriggerRepeat = 1;
 % vid2.TriggerRepeat = 1;
@@ -25,6 +25,7 @@ start([vid1, vid2]);
 % for i = 1:41
     % Trigger both objects.
     trigger([vid1, vid2])
+    start([vid1,vid2])
     % Get the acquired frames and metadata.
     gest_color = getdata(vid1);
     gest_depth = getdata(vid2);

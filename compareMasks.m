@@ -1,4 +1,4 @@
-function compare_masks(pos)
+function compareMasks(pos)
 %Input: gesture centroid positions array
 mask_files = ls('./masks');
 compare = zeros(size(mask_files,1) - 2, 1);
